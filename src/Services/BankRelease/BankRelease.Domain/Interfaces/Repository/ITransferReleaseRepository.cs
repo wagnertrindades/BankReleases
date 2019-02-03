@@ -7,6 +7,5 @@ namespace BankRelease.Domain.Interfaces.Repository
 {
     public interface ITransferReleaseRepository : IRepository<TransferRelease>
     {
-
     }
 }

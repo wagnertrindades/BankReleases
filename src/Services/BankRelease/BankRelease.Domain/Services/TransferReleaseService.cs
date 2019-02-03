@@ -18,13 +18,7 @@ namespace BankRelease.Domain.Services
 
         public TransferRelease Add(TransferRelease entity)
         {
-
             return _transferReleaseRepository.Add(entity);
-        }
-
-        public void Update(TransferRelease entity)
-        {
-            _transferReleaseRepository.Update(entity);
         }
 
         public IEnumerable<TransferRelease> All()

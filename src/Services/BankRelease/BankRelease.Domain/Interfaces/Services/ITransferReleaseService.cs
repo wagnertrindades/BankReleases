@@ -9,7 +9,6 @@ namespace BankRelease.Domain.Interfaces.Services
     public interface ITransferReleaseService
     {
         TransferRelease Add(TransferRelease entity);
-        void Update(TransferRelease entity);
 
         IEnumerable<TransferRelease> All();
         TransferRelease FindById(int id);

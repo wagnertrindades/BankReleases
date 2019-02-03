@@ -25,12 +25,6 @@ namespace BankRelease.Infrastructure.Repository
             return entity;
         }
 
-        public virtual void Update(TEntity entity)
-        {
-            _dbContext.Entry(entity).State = EntityState.Modified;
-            _dbContext.SaveChanges();
-        }
-
         public IEnumerable<TEntity> All()
         {
             return _dbContext.Set<TEntity>().AsEnumerable();
