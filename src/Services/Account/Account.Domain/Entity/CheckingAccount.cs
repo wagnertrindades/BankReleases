@@ -12,17 +12,17 @@ namespace Account.Domain.Entity
         public int Id { get; set; }
 
         [Column(TypeName = "decimal(18, 2)")]
-        public decimal Balance { get; private set; }
+        public virtual decimal Balance { get; private set; }
 
         public int UserId { get; set; }
         public User User { get; set; }
 
-        public void Credit(decimal value)
+        public virtual void Credit(decimal value)
         {
             Balance += value;
         }
 
-        public void Debit(decimal value)
+        public virtual void Debit(decimal value)
         {
             Balance -= value;
         }
