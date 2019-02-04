@@ -106,24 +106,5 @@ namespace Account.Api.Controllers
 
             return NoContent();
         }
-
-        // POST api/checking-account/5/transfer/6
-        [HttpPost("{originId}/transfer/{destinationId}")]
-        [ProducesResponseType(204)]
-        [ProducesResponseType(404)]
-        public IActionResult PostTransfer(int originId, int destinationId, [FromBody] decimal value)
-        {
-            var originAccount = _checkingAccountService.FindById(originId);
-            var destinationAccount = _checkingAccountService.FindById(destinationId);
-
-            if (originAccount == null || destinationAccount == null)
-            {
-                return NotFound();
-            }
-
-            _checkingAccountService.Transfer(originAccount, destinationAccount, value);
-
-            return NoContent();
-        }
     }
 }

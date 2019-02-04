@@ -17,6 +17,5 @@ namespace Account.Domain.Interfaces.Services
 
         void Credit(CheckingAccount entity, decimal value);
         void Debit(CheckingAccount entity, decimal value);
-        void Transfer(CheckingAccount origin, CheckingAccount destination, decimal value);
     }
 }

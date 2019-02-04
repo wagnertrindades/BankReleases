@@ -62,14 +62,5 @@ namespace Account.Domain.Services
             entity.Debit(value);
             _checkingAccountRepository.Update(entity);
         }
-
-        public void Transfer(CheckingAccount origin, CheckingAccount destination, decimal value)
-        {
-            origin.Debit(value);
-            destination.Credit(value);
-
-            _checkingAccountRepository.Update(origin);
-            _checkingAccountRepository.Update(destination);
-        }
     }
 }
