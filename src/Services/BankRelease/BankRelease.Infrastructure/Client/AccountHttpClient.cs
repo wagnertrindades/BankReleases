@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BankRelease.Domain.Interfaces.Client;
+using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BankRelease.Infrastructure.Client
 {
-    public class AccountHttpClient
+    public class AccountHttpClient : IAccountClient
     {
         public HttpClient Client { get; }
 
@@ -25,7 +26,7 @@ namespace BankRelease.Infrastructure.Client
         public async Task<Uri> CheckingAccountDebit(int accountId, decimal value)
         {
             HttpResponseMessage response = await Client.PostAsJsonAsync(
-                "api/checking-account/{accountId}/debit", value);
+                $"api/checking-account/{accountId}/debit", value);
             response.EnsureSuccessStatusCode();
 
             return response.Headers.Location;
@@ -34,7 +35,7 @@ namespace BankRelease.Infrastructure.Client
         public async Task<Uri> CheckingAccountCredit(int accountId, decimal value)
         {
             HttpResponseMessage response = await Client.PostAsJsonAsync(
-                "api/checking-account/{accountId}/credit", value);
+                $"api/checking-account/{accountId}/credit", value);
             response.EnsureSuccessStatusCode();
 
             return response.Headers.Location;

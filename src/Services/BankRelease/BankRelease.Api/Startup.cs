@@ -1,6 +1,8 @@
-﻿using BankRelease.Domain.Interfaces.Repository;
+﻿using BankRelease.Domain.Interfaces.Client;
+using BankRelease.Domain.Interfaces.Repository;
 using BankRelease.Domain.Interfaces.Services;
 using BankRelease.Domain.Services;
+using BankRelease.Infrastructure.Client;
 using BankRelease.Infrastructure.Data;
 using BankRelease.Infrastructure.Repository;
 using Microsoft.AspNetCore.Builder;
@@ -32,6 +34,7 @@ namespace BankRelease.Api
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<ITransferReleaseRepository, TransferReleaseRepository>();
+            services.AddHttpClient<IAccountClient, AccountHttpClient>();
             services.AddScoped<ITransferReleaseService, TransferReleaseService>();
         }
 
