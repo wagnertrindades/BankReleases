@@ -19,6 +19,9 @@ namespace Account.Infrastructure.Data
         {
             modelBuilder.Entity<CheckingAccount>().ToTable("CheckingAccount");
             modelBuilder.Entity<User>().ToTable("User");
+            modelBuilder.Entity<User>().HasIndex(u => u.Email).IsUnique();
+            modelBuilder.Entity<User>().HasIndex(u => u.CPF).IsUnique();
+
             modelBuilder.ApplyConfiguration(new CheckingAccountMap());
             modelBuilder.ApplyConfiguration(new UserMap());
         }
