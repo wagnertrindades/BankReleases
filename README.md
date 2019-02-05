@@ -1,6 +1,8 @@
 # BankReleases
 BankReleasesApp
 
+![image](https://user-images.githubusercontent.com/16762195/52281784-f74cd280-2945-11e9-8ff1-122ac0138b76.png)
+
 ### Account - Microservice de contas
 
 **Endpoints das contas correntes**
