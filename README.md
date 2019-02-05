@@ -1,7 +1,7 @@
 # BankReleases
 BankReleasesApp
 
-![image](https://user-images.githubusercontent.com/16762195/52281784-f74cd280-2945-11e9-8ff1-122ac0138b76.png)
+![image](https://user-images.githubusercontent.com/16762195/52282034-88bc4480-2946-11e9-99c6-43c7c1ce7dbc.png)
 
 ### Account - Microservice de contas
 
