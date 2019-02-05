@@ -5,6 +5,10 @@
 ### BankRelease - Microservice de lançamentos
 >Microserviço responsável pelos lançamentos que neste caso foi implementado o lançamento de transferência.
 
+Nesse microserviço foi implementado a possibilidade de buscar todas as transferências, criar uma transferência e consultar uma transferência.
+
+Na operação de criar uma transferência é feita a comunicação com o microserviço de contas via http request de débito na conta de origin e crédito na conta de destino.
+
 **Endpoints de lançamentos de transferência**
 
 Para ver todos os lançamentos de transferência:
@@ -32,6 +36,10 @@ http://localhost:5000/api/transfer-release/{transferReleaseId}/
 
 ### Account - Microservice de contas
 >Microserviço responsável pelas contas que nesse caso foi implementado as operações de conta corrente e usuário.
+
+Nesse microserviço foi implementado a possibilidade de buscar todas as contas correntes, criar uma conta corrente, consultar uma conta corrente, atualizar uma conta corrente, deletar uma conta corrente, fazer o débito de determinado valor em uma conta corrente e fazer o crédito de determinado valor em uma conta corrente.
+
+Também foi implementado os usuários que cada conta corrente pertence a um usuário e neles as operações de buscar todos os usuários, criar um usuário, consultar um usuário, atualizar e deletar um usuário. 
 
 **Endpoints das contas correntes**
 
