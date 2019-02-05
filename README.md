@@ -2,7 +2,7 @@
 
 ![image](https://user-images.githubusercontent.com/16762195/52282034-88bc4480-2946-11e9-99c6-43c7c1ce7dbc.png)
 
-### BankReleases - Microservice de lançamentos
+### BankRelease - Microservice de lançamentos
 Microserviço responsável pelos lançamentos que neste caso foi implementado o lançamento de transferência.
 
 **Endpoints de lançamentos de transferência**
