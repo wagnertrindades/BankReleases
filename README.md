@@ -23,7 +23,7 @@ Para criar uma conta corrente:
 http://localhost:5000/api/checking-account/
 
 Body => {
-          Arrumarr
+          "userId": 1
         }
 ```
 
@@ -33,7 +33,8 @@ Para atualizar uma conta corrente:
 http://localhost:5000/api/checking-account/{accountId}/
 
 Body => {
-          Arrumarr
+	"id": {accountId},
+	"userId": 2
         }
 ```
 
@@ -83,7 +84,10 @@ Para criar um usuário:
 http://localhost:5000/api/user/
 
 Body => {
-          Arrumarr
+          "name": "Xunda",
+          "cpf": "38304928043",
+          "phone": "11998223344",
+          "email": "xunda@gmail.com"
         }
 ```
 
@@ -93,7 +97,11 @@ Para atualizar um usuário:
 http://localhost:5000/api/user/{userId}/
 
 Body => {
-          Arrumarr
+          "id": {userId},
+          "name": "Xunda da Silva",
+          "cpf": "38304928043",
+          "phone": "11998223344",
+          "email": "xunda@gmail.com"
         }
 ```
 
