@@ -2,6 +2,33 @@
 
 ![image](https://user-images.githubusercontent.com/16762195/52282034-88bc4480-2946-11e9-99c6-43c7c1ce7dbc.png)
 
+### Setup para subir o projeto localmente
+
+Após clonar o projeto para sua máquina local deve seguir os seguintes passos:
+
+- Configurar APIGateway para não rodar pelo IIS Express
+
+	- Selecionar o APIGateway
+
+ 	![image](https://user-images.githubusercontent.com/16762195/52290892-456ad180-2958-11e9-97d0-768fa713ffa3.png)
+
+ 	- Selecionar o play com API Gateway
+
+ 	![image](https://user-images.githubusercontent.com/16762195/52291052-a4304b00-2958-11e9-86aa-da7d86d31e3a.png)
+	
+- Configurar o projeto para rodar todos os microservices e o API Gateway
+
+	- Clique com o botão direito na solução do projeto na Solution Explorer e em Set StartUp Projects
+	
+	<img src="https://user-images.githubusercontent.com/16762195/52291263-20c32980-2959-11e9-881b-27869d270760.png" alt="image" style="max-width:100%;" width="350" height="450">
+
+	- Selecione Multiple startup projects e os seguintes projetos devem estar com Start selecionado:
+		- Account.Api
+		- APIGateway
+		- BankRelease.Api
+		
+	<img src="https://user-images.githubusercontent.com/16762195/52291509-a941ca00-2959-11e9-8c72-3003f9a65737.png" alt="image" style="max-width:100%;" width="600" height="400">
+
 ### BankRelease - Microservice de lançamentos
 >Microserviço responsável pelos lançamentos que neste caso foi implementado o lançamento de transferência.
 
