@@ -23,9 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankRelease.Api", "src\Serv
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APIGateway", "src\APIGateway\APIGateway.csproj", "{9FD9707C-2724-4942-8546-596F7E1D2494}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Account.UnitTests", "src\Services\Account\Account.UnitTests\Account.UnitTests.csproj", "{C5654D48-F218-45D5-AF97-C37167DD8D0A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Account.UnitTests", "src\Services\Account\Account.UnitTests\Account.UnitTests.csproj", "{C5654D48-F218-45D5-AF97-C37167DD8D0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankRelease.UnitTests", "src\Services\BankRelease\BankRelease.UnitTests\BankRelease.UnitTests.csproj", "{99C97BBB-307D-48C5-A50D-F766F5DF1030}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankRelease.UnitTests", "src\Services\BankRelease\BankRelease.UnitTests\BankRelease.UnitTests.csproj", "{99C97BBB-307D-48C5-A50D-F766F5DF1030}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

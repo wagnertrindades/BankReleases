@@ -24,8 +24,9 @@ namespace BankRelease.UnitTests.Domain.Services
         }
 
         [Fact]
-        public void Add()
+        public async void Add()
         {
+            //Arrange
             var transferReleaseMock = Substitute.For<TransferRelease>();
             var value = new decimal(100.00);
 
@@ -33,11 +34,13 @@ namespace BankRelease.UnitTests.Domain.Services
             transferReleaseMock.DestinationAccount = 2;
             transferReleaseMock.Value = value;
 
-            transferReleaseService.Add(transferReleaseMock);
+            //Act
+            await transferReleaseService.Add(transferReleaseMock);
 
+            //Assert
             Received.InOrder(() => {
-                accountClientMock.CheckingAccountDebit(transferReleaseMock.OriginAccount, transferReleaseMock.Value);
-                accountClientMock.CheckingAccountCredit(transferReleaseMock.DestinationAccount, transferReleaseMock.Value);
+                accountClientMock.CheckingAccountDebit(transferReleaseMock);
+                accountClientMock.CheckingAccountCredit(transferReleaseMock);
                 transferReleaseRepositoryMock.Add(transferReleaseMock);
             });
         }
@@ -45,27 +48,36 @@ namespace BankRelease.UnitTests.Domain.Services
         [Fact]
         public void All()
         {
+            //Act
             transferReleaseService.All();
 
+            //Assert
             transferReleaseRepositoryMock.Received().All();
         }
 
         [Fact]
         public void Find()
         {
+            //Arrange
             Expression<Func<TransferRelease, bool>> Filter = x => x.Value > new decimal(10.00);
-
+            
+            //Act
             transferReleaseRepositoryMock.Find(Filter);
-
+            
+            //Assert
             transferReleaseRepositoryMock.Received().Find(Filter);
         }
 
         [Fact]
         public void FindById()
         {
+            //Arrange
             var id = 10;
-            transferReleaseService.FindById(id);
 
+            //Act
+            transferReleaseService.FindById(id);
+            
+            //Assert
             transferReleaseRepositoryMock.Received().FindById(id);
         }
     }

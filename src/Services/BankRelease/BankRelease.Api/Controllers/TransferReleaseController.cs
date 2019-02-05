@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using BankRelease.Domain.Entity;
 using BankRelease.Domain.Interfaces.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -43,11 +45,19 @@ namespace BankRelease.Api.Controllers
         // POST api/transfer-release
         [HttpPost]
         [ProducesResponseType(201, Type = typeof(TransferRelease))]
-        public ActionResult<IEnumerable<TransferRelease>> Post([FromBody] TransferRelease transferRelease)
+        [ProducesResponseType(400)]
+        public async Task<ActionResult<IEnumerable<TransferRelease>>> Post([FromBody] TransferRelease transferRelease)
         {
-            _transferReleaseService.Add(transferRelease);
-
-            return CreatedAtAction(nameof(GetById), new { id = transferRelease.Id }, transferRelease);
+            try
+            {
+                await _transferReleaseService.Add(transferRelease);
+        
+                return CreatedAtAction(nameof(GetById), new { id = transferRelease.Id }, transferRelease);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
     }
 }

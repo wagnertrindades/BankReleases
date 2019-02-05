@@ -57,7 +57,7 @@ namespace Account.Domain.Services
         public void Debit(CheckingAccount entity, decimal value)
         {
             if (value < 0) { throw new InvalidOperationException("[value] cannot less then zero."); }
-            if (value > entity.Balance) { throw new InvalidOperationException("[value] cannot bigger then balance."); }
+            if (value > entity.Balance) { throw new InvalidOperationException("[value] insufficient balance for debit."); }
 
             entity.Debit(value);
             _checkingAccountRepository.Update(entity);

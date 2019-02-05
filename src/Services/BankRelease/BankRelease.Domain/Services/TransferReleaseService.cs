@@ -5,6 +5,9 @@ using BankRelease.Domain.Interfaces.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace BankRelease.Domain.Services
 {
@@ -19,11 +22,19 @@ namespace BankRelease.Domain.Services
             _accountClient = accountClient;
         }
 
-        public TransferRelease Add(TransferRelease entity)
+        public async Task<TransferRelease> Add(TransferRelease entity)
         {
-            _accountClient.CheckingAccountDebit(entity.OriginAccount, entity.Value);
-            _accountClient.CheckingAccountCredit(entity.DestinationAccount, entity.Value);
-            return _transferReleaseRepository.Add(entity);
+            try
+            {
+                await _accountClient.CheckingAccountDebit(entity);
+                await _accountClient.CheckingAccountCredit(entity);
+
+                return _transferReleaseRepository.Add(entity);
+            }
+            catch (HttpRequestException e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public IEnumerable<TransferRelease> All()

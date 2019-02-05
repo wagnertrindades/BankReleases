@@ -1,4 +1,5 @@
-﻿using BankRelease.Domain.Interfaces.Client;
+﻿using BankRelease.Domain.Entity;
+using BankRelease.Domain.Interfaces.Client;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -23,22 +24,32 @@ namespace BankRelease.Infrastructure.Client
             Client = client;
         }
 
-        public async Task<Uri> CheckingAccountDebit(int accountId, decimal value)
+        public async Task<Uri> CheckingAccountDebit(TransferRelease transferRelease)
         {
             HttpResponseMessage response = await Client.PostAsJsonAsync(
-                $"api/checking-account/{accountId}/debit", value);
-            response.EnsureSuccessStatusCode();
+                $"api/checking-account/{transferRelease.OriginAccount}/debit", transferRelease);
 
-            return response.Headers.Location;
+            if(response.IsSuccessStatusCode)
+            {
+                return response.Headers.Location;
+            }
+
+            var contents = await response.Content.ReadAsStringAsync();
+            throw new HttpRequestException(contents);
         }
 
-        public async Task<Uri> CheckingAccountCredit(int accountId, decimal value)
+        public async Task<Uri> CheckingAccountCredit(TransferRelease transferRelease)
         {
             HttpResponseMessage response = await Client.PostAsJsonAsync(
-                $"api/checking-account/{accountId}/credit", value);
-            response.EnsureSuccessStatusCode();
+                $"api/checking-account/{transferRelease.DestinationAccount}/credit", transferRelease);
 
-            return response.Headers.Location;
+            if (response.IsSuccessStatusCode)
+            {
+                return response.Headers.Location;
+            }
+
+            var contents = await response.Content.ReadAsStringAsync();
+            throw new HttpRequestException(contents);
         }
     }
 }
